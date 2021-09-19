@@ -19,22 +19,20 @@ def numOfBus(city, filename):
 
 
 # avgStars: the average number of stars of a business in the city
-def avgStars(file, city):
+def avgStars(filename, city):
     sum = 0
-    with open(file, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
+    filereader = get_data(filename)
+    for row in filereader:
             if (row['city'] == city):
                 sum = sum + float(row['stars'])
     return sum
 
 
 # numOfRestaurants: the number of restaurants in the city
-def numOfRestaurants(file, city):
+def numOfRestaurants(filename, city):
     count = 0
-    with open(file, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
+    filereader = get_data(filename)
+    for row in filereader:
             if (row['city'] == city):
                 if "Restaurants" in row['categories']:
                     count += 1
@@ -42,11 +40,10 @@ def numOfRestaurants(file, city):
 
 
 # avgStarsRestaurants: the average number of stars of restaurants in the city
-def avgStarsRestaurants(file, city):
+def avgStarsRestaurants(filename, city):
     sum = 0
-    with open(file, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
+    filereader = get_data(filename)
+    for row in filereader:
             if (row['city'] == city):
                 if "Restaurants" in row['categories']:
                     sum = sum + float(row['stars'])
@@ -54,22 +51,20 @@ def avgStarsRestaurants(file, city):
 
 
 # avgNumOfReviews: the average number of reviews for all businesses in the city
-def avgNumOfReviews(file, city):
+def avgNumOfReviews(filename, city):
     sum = 0
-    with open(file, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
+    filereader = get_data(filename)
+    for row in filereader:
             if (row['city'] == city):
                 sum = sum + int(row['review_count'])
     return sum
 
 
 # avgNumOfReviewsBus: the average number of reviews for restaurants in the city
-def avgNumOfReviewsBus(file, city):
+def avgNumOfReviewsBus(filename, city):
     sum = 0
-    with open(file, newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
+    filereader = get_data(filename)
+    for row in filereader:
             if (row['city'] == city):
                 if "Restaurants" in row['categories']:
                     sum = sum + int(row['review_count'])
